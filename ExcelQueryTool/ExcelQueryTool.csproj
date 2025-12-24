@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>false</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>ExcelQueryTool-ico.ico</ApplicationIcon>
+    <StartupObject>ExcelQueryTool.App</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ExcelQueryTool-ico.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="8.4.0" />
+  </ItemGroup>
+
+</Project>
