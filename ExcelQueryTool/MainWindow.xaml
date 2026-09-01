@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExcelQueryTool"
+        xmlns:services="clr-namespace:ExcelQueryTool.Services"
         mc:Ignorable="d"
         Title="ExcelQueryTool" 
         Height="515" 
@@ -33,9 +34,9 @@
             <Label Content="查询内容：" VerticalAlignment="Center" Margin="0,0,5,0"/>
             <TextBox x:Name="txtKeyword" Width="339" Height="23" VerticalAlignment="Center" 
                      PreviewKeyDown="TxtKeyword_PreviewKeyDown" 
-                     ToolTip="搜索语法：!代表非，+或空格代表和，,或；代表或"/>
+                     ToolTip="搜索语法：&quot;!&quot;代表排除，&quot;&amp;&quot;或&quot;+&quot;代表并且，&quot;,&quot;或&quot;;&quot;代表或者"/>
             <Button x:Name="btnSearch" Content="搜索" Width="141" Height="23" Margin="10,0,0,0" Click="BtnSearch_Click"/>
-            <CheckBox x:Name="chkShowImages" Content="显示图片" VerticalAlignment="Center" Margin="20,0,0,0" 
+            <CheckBox x:Name="chkShowImages" Content="显示图片" VerticalAlignment="Center" Margin="80,0,0,0" 
                       Checked="ChkShowImages_CheckedChanged" Unchecked="ChkShowImages_CheckedChanged"/>
         </StackPanel>
 
@@ -45,7 +46,6 @@
                       AutoGenerateColumns="False"
                       VirtualizingStackPanel.IsVirtualizing="True"
                       VirtualizingStackPanel.VirtualizationMode="Recycling"
-                      VirtualizingStackPanel.CleanUpVirtualizedItem="DataGrid_CleanUpVirtualizedItem"
                       EnableColumnVirtualization="True"
                       EnableRowVirtualization="True"
                       ScrollViewer.CanContentScroll="True"
@@ -64,8 +64,6 @@
                       AllowDrop="True"
                       Drop="DataGrid_Drop"
                       DragEnter="DataGrid_DragEnter"
-                      Loaded="DataGridViewResults_Loaded"
-                      LayoutUpdated="DataGridViewResults_LayoutUpdated"
                       GridLinesVisibility="All"
                       HorizontalGridLinesBrush="LightGray"
                       VerticalGridLinesBrush="LightGray"
@@ -98,12 +96,12 @@
         <!-- 第四行：状态栏 -->
         <StatusBar Grid.Row="3" Grid.Column="0">
             <StatusBarItem HorizontalAlignment="Left">
-                <TextBlock x:Name="toolStripStatusLabel" Text="本工具用于快速搜索Excel工作表中符合要求的数据记录。" 
+                <TextBlock x:Name="statusLabelMessage" Text="本工具用于快速搜索Excel工作表中符合要求的数据记录。" 
                            VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Stretch" Width="Auto"/>
             <StatusBarItem HorizontalAlignment="Right">
-                <TextBlock x:Name="toolStripStatusLabel1" Text="欢迎使用Excel工作表快速搜索工具        版本：v3.0" 
+                <TextBlock x:Name="statusLabelVersion" Text="欢迎使用Excel工作表快速搜索工具        版本：v3.2" 
                            Foreground="Blue" FontWeight="Bold" Margin="0,0,10,0"/>
             </StatusBarItem>
         </StatusBar>
