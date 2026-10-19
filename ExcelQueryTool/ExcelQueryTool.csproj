@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>false</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>ExcelQueryTool-ico.ico</ApplicationIcon>
+    <StartupObject>ExcelQueryTool.App</StartupObject>
+    <Version>3.7.0</Version>
+    <!-- 并行解析（8 worker）下工作站 GC 的 Gen0 暂停被放大（实测每块 2.1s ≈ 3.4× 膨胀），服务器 GC 按核分堆消除该串行化 -->
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+  </PropertyGroup>
+
+  <!-- Release 交付产物不带 pdb：调试符号只在 Debug 配置生成 -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ExcelQueryTool-ico.ico" />
+  </ItemGroup>
+
+</Project>
